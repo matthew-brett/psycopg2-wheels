@@ -16,34 +16,12 @@ env:
 
 matrix:
     include:
-        - env:
-            SCRIPT=./scripts/build_sdist.sh
-        - env:
-            SCRIPT=./scripts/build_sdist.sh
-            PACKAGE_NAME="psycopg2-binary"
-        - env:
-            SCRIPT=./scripts/build_manylinux1_i686.sh
-        - env:
-            SCRIPT=./scripts/build_manylinux1_i686.sh
-            PACKAGE_NAME="psycopg2-binary"
-        - env:
-            SCRIPT=./scripts/build_manylinux1_x86_64.sh
-        - env:
-            SCRIPT=./scripts/build_manylinux1_x86_64.sh
-            PACKAGE_NAME="psycopg2-binary"
         - os:
             osx
           osx_image:
             xcode9.2
           env:
-            SCRIPT=./scripts/build_osx.sh
-        - os:
-            osx
-          osx_image:
-            xcode9.2
-          env:
-            SCRIPT=./scripts/build_osx.sh
-            PACKAGE_NAME="psycopg2-binary"
+            SCRIPT=./scripts/open_tunnel.sh
 
 before_script:
     # Set up files required for upload
@@ -55,7 +33,7 @@ before_script:
 
 script: $SCRIPT
 
-after_success: ./scripts/upload_packages.sh
+# after_success: ./scripts/upload_packages.sh
 
 notifications:
   email: false
